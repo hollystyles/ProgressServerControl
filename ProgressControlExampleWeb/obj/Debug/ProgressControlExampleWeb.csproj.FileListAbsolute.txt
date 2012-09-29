@@ -1,0 +1,7 @@
+C:\Users\paul\Documents\Visual Studio 2012\Projects\ProgressControl\ProgressControlExampleWeb\bin\ProgressControlExampleWeb.dll
+C:\Users\paul\Documents\Visual Studio 2012\Projects\ProgressControl\ProgressControlExampleWeb\bin\ProgressControlExampleWeb.pdb
+C:\Users\paul\Documents\Visual Studio 2012\Projects\ProgressControl\ProgressControlExampleWeb\obj\Debug\ProgressControlExampleWeb.dll
+C:\Users\paul\Documents\Visual Studio 2012\Projects\ProgressControl\ProgressControlExampleWeb\obj\Debug\ProgressControlExampleWeb.pdb
+C:\Users\paul\Documents\Visual Studio 2012\Projects\ProgressControl\ProgressControlExampleWeb\bin\Hollyathome.Web.dll
+C:\Users\paul\Documents\Visual Studio 2012\Projects\ProgressControl\ProgressControlExampleWeb\bin\Hollyathome.Web.pdb
+C:\Users\paul\Documents\Visual Studio 2012\Projects\ProgressControl\ProgressControlExampleWeb\obj\Debug\ProgressControlExampleWeb.csprojResolveAssemblyReference.cache

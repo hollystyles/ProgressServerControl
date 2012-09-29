@@ -1,0 +1,10 @@
+c:\users\paul\documents\visual studio 2012\Projects\ProgressControl\ServerControl1\bin\Debug\Hollyathome.Web.dll
+c:\users\paul\documents\visual studio 2012\Projects\ProgressControl\ServerControl1\bin\Debug\Hollyathome.Web.pdb
+c:\users\paul\documents\visual studio 2012\Projects\ProgressControl\ServerControl1\obj\Debug\ProgressControl.csprojResolveAssemblyReference.cache
+c:\users\paul\documents\visual studio 2012\Projects\ProgressControl\ServerControl1\obj\Debug\Hollyathome.Web.dll
+c:\users\paul\documents\visual studio 2012\Projects\ProgressControl\ServerControl1\obj\Debug\Hollyathome.Web.pdb
+C:\Users\paul\Documents\Visual Studio 2012\Projects\ProgressControl\ProgressControl\bin\Debug\Hollyathome.Web.dll
+C:\Users\paul\Documents\Visual Studio 2012\Projects\ProgressControl\ProgressControl\bin\Debug\Hollyathome.Web.pdb
+C:\Users\paul\Documents\Visual Studio 2012\Projects\ProgressControl\ProgressControl\obj\Debug\Hollyathome.Web.dll
+C:\Users\paul\Documents\Visual Studio 2012\Projects\ProgressControl\ProgressControl\obj\Debug\Hollyathome.Web.pdb
+C:\Users\paul\Documents\Visual Studio 2012\Projects\ProgressControl\ProgressControl\obj\Debug\ProgressControl.csprojResolveAssemblyReference.cache
