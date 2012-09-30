@@ -1,6 +1,12 @@
 ﻿var progressControls = [];
-
-setInterval(pollProgress, 2000);
+var pollIntervalId = setInterval(pollProgress, 2000);
+var emptyCount = 0;
+var XMLHttpFactories = [
+    function () { return new XMLHttpRequest() },
+    function () { return new ActiveXObject("Msxml2.XMLHTTP") },
+    function () { return new ActiveXObject("Msxml3.XMLHTTP") },
+    function () { return new ActiveXObject("Microsoft.XMLHTTP") }
+];
 
 function pollProgress() {
     for (var i = 0; i < progressControls.length; i++) {
@@ -12,12 +18,29 @@ function receiveProgress(response) {
     
     eval('var progress = ' + response.response);
 
-    for (var i = 0; i < progress.length; i++) {
-        for (var j = 0; j < progressControls.length; j++) {
-            if (progressControls[j] == progress[i].Key) {
-                var progEl = document.getElementById(progressControls[j])
-                var progressVal = (progress[i].Count / progress[i].Total) * 100 + '%';
-                progEl.firstChild.style.width = progressVal;
+    if (progress.length == 0) {
+        if (emptyCount > 3) {
+            window.clearInterval(pollIntervalId);
+        } else {
+            emptyCount++;
+        }
+    } else {
+        for (var i = 0; i < progress.length; i++) {
+
+            for (var j = 0; j < progressControls.length; j++) {
+
+                if (progressControls[j] == progress[i].Key) {
+
+                    var progEvt = progress[i];
+                    var progEl = document.getElementById(progressControls[j]);
+                    var progVal = (progEvt.Count / progEvt.Total) * 100;
+
+                    progEl.firstChild.style.width = progVal + '%';
+
+                    if (progEvt.Count == progEvt.Total) {
+                        window.clearInterval(pollIntervalId);
+                    }
+                }
             }
         }
     }
@@ -40,13 +63,6 @@ function sendRequest(url, callback, postData) {
     if (req.readyState == 4) return;
     req.send(postData);
 }
-
-var XMLHttpFactories = [
-    function () { return new XMLHttpRequest() },
-    function () { return new ActiveXObject("Msxml2.XMLHTTP") },
-    function () { return new ActiveXObject("Msxml3.XMLHTTP") },
-    function () { return new ActiveXObject("Microsoft.XMLHTTP") }
-];
 
 function createXMLHTTPObject() {
     var xmlhttp = false;

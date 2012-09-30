@@ -13,13 +13,22 @@ namespace Hollyathome.Web.UI
     {
         public override void Initialize(System.ComponentModel.IComponent component)
         {
-            System.Diagnostics.Debugger.Launch();
-            IWebApplication webApp = Component.Site.GetService(typeof(IWebApplication)) as IWebApplication;
-            Configuration config = webApp.OpenWebConfiguration(true);
-            config.SectionGroups.Add("system.webServer", new ConfigurationSectionGroup());
-            config.Save();
+            //IWebApplication webApp = this.GetService(typeof(IWebApplication)) as IWebApplication;
+            //Configuration config = webApp.OpenWebConfiguration(true);
+            //config.SectionGroups.Add("system.webServer", new ConfigurationSectionGroup());
+            //config.Save();
             
             base.Initialize(component);
+        }
+
+        public override string GetDesignTimeHtml()
+        {
+            IWebApplication webApp = this.GetService(typeof(IWebApplication)) as IWebApplication;
+            if(webApp != null)
+            {
+                Configuration config = webApp.OpenWebConfiguration(true);
+            }
+            return base.GetDesignTimeHtml();
         }
     }
 }
