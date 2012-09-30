@@ -3,6 +3,7 @@ Progress Control
 Use to visualy display progress of long running server-side tasks.
 
 aspx
+
     <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ProgressControlExampleWeb.Default" %>
     <%@ Register Assembly="Hollyathome.Web" Namespace="Hollyathome.Web.UI" TagPrefix="cc1" %>
     <!DOCTYPE html>
@@ -21,6 +22,7 @@ aspx
     </html>
 
 aspx.cs
+
     using System.Web.UI;
     using System.Web.UI.WebControls;
 
@@ -47,6 +49,7 @@ aspx.cs
     }
 
 web.config
+
     <system.webServer>
         <handlers>
             <add name="ProgressHandler" verb="GET" path="*.progress" type="Hollyathome.Web.ProgressHandler, Hollyathome.Web"/>
