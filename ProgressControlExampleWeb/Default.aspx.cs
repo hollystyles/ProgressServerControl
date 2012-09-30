@@ -21,7 +21,7 @@ namespace ProgressControlExampleWeb
                 {
                     ProgressControl.AddEvent(
                         new ProgressEvent(
-                            progress1.ClientID, 10, i));
+                            ProgressControl1.ClientID, 10, i));
                     
                     Thread.Sleep(1000);
                 }

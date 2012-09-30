@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Web.UI;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -34,6 +35,7 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
+[assembly: TagPrefix("Hollyathome.Web.UI", "hah")]
 //Embedded resources
 [assembly: System.Web.UI.WebResource("Hollyathome.Web.UI.js.ProgressControl.js", "text/javascript")]
+
