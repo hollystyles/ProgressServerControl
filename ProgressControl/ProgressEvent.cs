@@ -2,14 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web;
 
 namespace Hollyathome.Web.UI
 {
     public class ProgressEvent
     {
+        private string sessionId;
         private string progressKey;
         private int total;
         private int count;
+
+        public string SessionId
+        {
+            get
+            {
+                return sessionId;
+            }
+        }
 
         public string ProgressKey
         {
@@ -35,11 +45,12 @@ namespace Hollyathome.Web.UI
             }
         }
 
-        public ProgressEvent(string progressKey, int total, int count)
+        public ProgressEvent(string sessionId, string progressKey, int total, int count)
         {
             this.total = total;
             this.count = count;
             this.progressKey = progressKey;
+            this.sessionId = sessionId;
         }
 
         public override string ToString()

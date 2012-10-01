@@ -37,9 +37,7 @@ aspx.cs
                 {
                     for (int i = 0; i <= 10; i++)
                     {
-                        ProgressControl.AddEvent(
-                            new ProgressEvent(
-                               progress1.ClientID, 10, i));
+                        ProgressControl1.AddEvent(10, i);
                     
                         Thread.Sleep(1000);
                     }
@@ -50,6 +48,10 @@ aspx.cs
 
 web.config
 
+    <system.web>
+        <sessionState cookieless="UseCookies" mode="InProc" timeout="20"></sessionState>
+    </system.web>
+  
     <system.webServer>
         <handlers>
             <add name="ProgressHandler" verb="GET" path="*.progress" type="Hollyathome.Web.ProgressHandler, Hollyathome.Web"/>

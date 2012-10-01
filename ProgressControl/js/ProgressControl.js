@@ -10,7 +10,7 @@ var XMLHttpFactories = [
 
 function pollProgress() {
     for (var i = 0; i < progressControls.length; i++) {
-        sendRequest('poll.progress?k=' + progressControls[i], receiveProgress);
+        sendRequest('poll.progress', receiveProgress);
     }
 }
 

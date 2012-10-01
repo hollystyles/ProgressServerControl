@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Linq;
+using System.Web;
 
 namespace Hollyathome.Web.UI
 {
@@ -13,6 +14,7 @@ namespace Hollyathome.Web.UI
     public class ProgressControl : WebControl
     {
         private static List<ProgressEvent> progressEvents = new List<ProgressEvent>();
+        private string sessionId;
         
         [Bindable(true)]
         [Category("Appearance")]
@@ -30,6 +32,12 @@ namespace Hollyathome.Web.UI
             {
                 ViewState["Text"] = value;
             }
+        }
+
+        protected override void OnInit(EventArgs e)
+        {
+            sessionId = HttpContext.Current.Session.SessionID;
+            base.OnInit(e);
         }
 
         protected override void OnPreRender(EventArgs e)
@@ -57,9 +65,9 @@ namespace Hollyathome.Web.UI
             output.Write(Text);
         }
 
-        public static IEnumerable<ProgressEvent> GetEvents(string key)
+        public static IEnumerable<ProgressEvent> GetEvents(string sessionId)
         {
-            List<ProgressEvent> results = progressEvents.Where(e => e.ProgressKey == key).ToList();
+            List<ProgressEvent> results = progressEvents.Where(e => e.SessionId == sessionId).ToList();
             foreach(ProgressEvent e in results)
             {
                 progressEvents.Remove(e);
@@ -68,9 +76,12 @@ namespace Hollyathome.Web.UI
             return results;
          }
 
-        public static void AddEvent(ProgressEvent e)
+        public void AddEvent(int total, int count)
         {
-            progressEvents.Add(e);
+            if (!String.IsNullOrEmpty(sessionId))
+            {
+                progressEvents.Add(new ProgressEvent(this.sessionId, this.ClientID, total, count));
+            }
         }
     }
 }

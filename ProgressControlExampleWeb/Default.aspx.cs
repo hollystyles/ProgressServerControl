@@ -14,18 +14,17 @@ namespace ProgressControlExampleWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            //Task.Factory.StartNew(() =>
-            //{
-            //    for (int i = 0; i <= 10; i++)
-            //    {
-            //        ProgressControl.AddEvent(
-            //            new ProgressEvent(
-            //                ProgressControl1.ClientID, 10, i));
-            //        
-            //        Thread.Sleep(1000);
-            //    }
-            //}); 
+            //ddlObjectName.Items.Insert(0, new ListItem("Please Select...", "-1"));
+
+           Task.Factory.StartNew(() =>
+           {
+               for (int i = 0; i <= 10; i++)
+               {
+                   ProgressControl1.AddEvent(10, i);
+                   
+                   Thread.Sleep(1000);
+               }
+           }); 
         }
     }
 }
