@@ -1,4 +1,16 @@
-﻿var progressControls = [];
+﻿//*****************************************************
+//
+//
+//
+//
+//
+//*****************************************************
+
+
+//***************************
+//       Globals
+//***************************
+var progressControls = [];
 var pollIntervalId = setInterval(pollProgress, 2000);
 var emptyCount = 0;
 var XMLHttpFactories = [
@@ -8,12 +20,18 @@ var XMLHttpFactories = [
     function () { return new ActiveXObject("Microsoft.XMLHTTP") }
 ];
 
+//***************************************
+// Poll ProgressHandler for progress
+//***************************************
 function pollProgress() {
     for (var i = 0; i < progressControls.length; i++) {
         sendRequest('poll.progress', receiveProgress);
     }
 }
 
+//***************************************
+// Process response from ProgressHandler
+//***************************************
 function receiveProgress(response) {
     
     eval('var progress = ' + response.response);
@@ -36,6 +54,7 @@ function receiveProgress(response) {
                     var progVal = (progEvt.Count / progEvt.Total) * 100;
 
                     progEl.firstChild.style.width = progVal + '%';
+                    progEl.firstChild.innerText = progVal + '%';
 
                     if (progEvt.Count == progEvt.Total) {
                         window.clearInterval(pollIntervalId);
@@ -46,6 +65,9 @@ function receiveProgress(response) {
     }
 }
 
+//*********************************************
+// Sends an AJAX request to server
+//*********************************************
 function sendRequest(url, callback, postData) {
     var req = createXMLHTTPObject();
     if (!req) return;
@@ -64,6 +86,9 @@ function sendRequest(url, callback, postData) {
     req.send(postData);
 }
 
+//*********************************************
+// x-browser create xHR object factory
+//*********************************************
 function createXMLHTTPObject() {
     var xmlhttp = false;
     for (var i = 0; i < XMLHttpFactories.length; i++) {

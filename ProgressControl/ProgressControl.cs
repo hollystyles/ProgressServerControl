@@ -16,24 +16,6 @@ namespace Hollyathome.Web.UI
         private static List<ProgressEvent> progressEvents = new List<ProgressEvent>();
         private string sessionId;
         
-        [Bindable(true)]
-        [Category("Appearance")]
-        [DefaultValue("")]
-        [Localizable(true)]
-        public string Text
-        {
-            get
-            {
-                String s = (String)ViewState["Text"];
-                return ((s == null)? "<div style='background-color:green;height:10px;width:0%;'></div>" : s);
-            }
- 
-            set
-            {
-                ViewState["Text"] = value;
-            }
-        }
-
         protected override void OnInit(EventArgs e)
         {
             sessionId = HttpContext.Current.Session.SessionID;
@@ -61,8 +43,20 @@ namespace Hollyathome.Web.UI
         protected override void RenderContents(HtmlTextWriter output)
         {
             Page.ClientScript.RegisterStartupScript(this.GetType(), this.ClientID, "progressControls.push('" + this.ClientID + "')", true);
-            
-            output.Write(Text);
+            if (String.IsNullOrEmpty(this.CssClass))
+            {
+                output.Write(String.Format(
+                    "<div style='background-color:{0};height:10px;width:0%;'></div>",
+                    this.BackColor)
+                );
+            }
+            else
+            {
+                output.Write(String.Format(
+                    "<div class='{0}' style='width:0%;'></div>",
+                    this.CssClass)
+                );
+            }
         }
 
         public static IEnumerable<ProgressEvent> GetEvents(string sessionId)
